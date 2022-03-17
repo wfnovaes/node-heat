@@ -1,19 +1,15 @@
 import prismaClient from "../prisma/PrismaClient"
 
-class LastMessagesService {
-    async execute(size: number) {
+class ProfileUserService {
+    async execute(userId: string) {
 
-        const messages = await prismaClient.message.findMany({
-            take: size,
-            orderBy: {
-                created_at: "desc",
-            },
-            include: {
-                user: true
+        const user = await prismaClient.user.findFirst({
+            where: {
+                id: userId
             }
         });
-        return messages;
+        return user;
     }
 
 }
-export { LastMessagesService }
+export { ProfileUserService }

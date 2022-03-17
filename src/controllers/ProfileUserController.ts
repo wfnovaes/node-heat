@@ -5,7 +5,7 @@ class ProfileUserController {
 
     async handle(request: Request, response: Response) {
 
-        const { user_id } = request.params;
+        const { user_id } = request;
 
         const profileUserService = new ProfileUserService();
         try {
